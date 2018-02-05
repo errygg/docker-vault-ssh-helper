@@ -14,16 +14,16 @@ RUN wget https://releases.hashicorp.com/vault-ssh-helper/0.1.4/vault-ssh-helper_
 
 COPY config.hcl /etc/vault-ssh-helper.d/
 
-RUN sed -i "s/\@include common-auth//g" /etc/pam.d/sshd
-
-RUN echo "auth requisite pam_exec.so quiet expose_authtok\n \
-          log=/tmp/vaultssh.log /usr/local/bin/vault-ssh-helper -config=/etc/vault-ssh-helper.d/config.hcl\n \
-          auth optional pam_unix.so not_set_pass use_first_pass nodelay" >> /etc/pam.d/sshd
+COPY sshd /etc/pam.d/
 
 RUN sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
 
-RUN sed -i "s/\#UsePAM no/UsePAM yes/g" /etc/ssh/sshd_config
+RUN sed -i "s/^#UsePAM yes/UsePAM yes/g" /etc/ssh/sshd_config
 
-RUN sed -i "s/\#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
+RUN sed -i "s/\#PasswordAuthentication yes/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+
+RUN useradd -ms /bin/bash ubuntu
+
+RUN usermod -aG sudo ubuntu
 
 CMD ["/usr/sbin/sshd", "-D"]
