@@ -12,9 +12,9 @@ WORKDIR /usr/local/bin
 RUN wget https://releases.hashicorp.com/vault-ssh-helper/0.1.4/vault-ssh-helper_0.1.4_linux_amd64.zip \
   -O tmp.zip && unzip tmp.zip && rm tmp.zip
 
-COPY config.hcl /etc/vault-ssh-helper.d/
+COPY files/config.hcl /etc/vault-ssh-helper.d/
 
-COPY sshd /etc/pam.d/
+COPY files/sshd /etc/pam.d/
 
 RUN sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
 

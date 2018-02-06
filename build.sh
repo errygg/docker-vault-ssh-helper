@@ -6,4 +6,4 @@ else
   tag=$1
 fi
 
-docker build -t vault-ssh-helper:$tag .
+docker build -t errygg/vault-ssh-helper:$tag .
