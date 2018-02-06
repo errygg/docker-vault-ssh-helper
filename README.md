@@ -1,14 +1,14 @@
-### vault-ssh-helper Docker Container
+### docker-vault-ssh-helper Docker Container
 
 This image comes with [vault-ssh-helper](https://github.com/hashicorp/vault-ssh-helper) installed as well as sshd. Both are
 configured to allow connectivity to a [HashiCorp Vault](https://www.vaultproject.io/) server in `dev` mode. It
-is used to test [OTP](https://www.vaultproject.io/docs/secrets/ssh/one-time-ssh-passwords.html)
+is used to test [OTP](https://www.vaultproject.io/docs/secrets/ssh/one-time-ssh-passwords.html).
 
 For information on how to use this container please review the following blog:
 https://medium.com/@errygg/building-a-local-hashicorp-vault-cluster-5575fe322a17.
 
 #### Installation
-  $ docker pull errygg/vault-ssh-helper:latest
+  $ docker pull errygg/docker-vault-ssh-helper:latest
 
 #### NOTE
 This container is used in conjunction with that HashiCorp Vault container and
