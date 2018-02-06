@@ -5,7 +5,7 @@ configured to allow connectivity to a [HashiCorp Vault](https://www.vaultproject
 is used to test [OTP](https://www.vaultproject.io/docs/secrets/ssh/one-time-ssh-passwords.html)
 
 For information on how to use this container please review the following blog:
-https://medium.com/p/5575fe322a17.
+https://medium.com/@errygg/building-a-local-hashicorp-vault-cluster-5575fe322a17.
 
 #### Installation
   $ docker pull errygg/vault-ssh-helper:latest
