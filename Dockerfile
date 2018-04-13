@@ -16,11 +16,13 @@ COPY files/config.hcl /etc/vault-ssh-helper.d/
 
 COPY files/sshd /etc/pam.d/
 
-RUN sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
+COPY files/sshd_config /etc/ssh/sshd_config
 
-RUN sed -i "s/^#UsePAM yes/UsePAM yes/g" /etc/ssh/sshd_config
+#RUN sed -i "s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g" /etc/ssh/sshd_config
 
-RUN sed -i "s/\#PasswordAuthentication yes/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+#RUN sed -i "s/^#UsePAM yes/UsePAM yes/g" /etc/ssh/sshd_config
+
+#RUN sed -i "s/\#PasswordAuthentication yes/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 
 RUN useradd -ms /bin/bash ubuntu
 
